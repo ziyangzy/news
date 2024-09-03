@@ -1,0 +1,75 @@
+###
+POST http://localhost:51801/api/v1/login/login_auth
+Content-Type: application/json
+
+{
+  "phone": "13511223454",
+  "password": "lisi"
+}
+
+###
+POST http://localhost:51601/user/api/v1/login/login_auth
+Content-Type: application/json
+
+{
+  "phone": "13511223454",
+  "password": "123"
+}
+
+
+###
+POST http://192.168.150.130:9200/_analyze
+Content-Type: application/json
+
+{
+  "analyzer": "ik_max_word",
+  "text": "欢迎来黑马学习"
+}
+###
+PUT  http://192.168.150.130:9200/app_info_article
+Content-Type: application/json
+
+{
+  "mappings":{
+    "properties":{
+      "id":{
+        "type":"long"
+      },
+      "publishTime":{
+        "type":"date"
+      },
+      "layout":{
+        "type":"integer"
+      },
+      "images":{
+        "type":"keyword",
+        "index": false
+      },
+      "staticUrl":{
+        "type":"keyword",
+        "index": false
+      },
+      "authorId": {
+        "type": "long"
+      },
+      "authorName": {
+        "type": "text"
+      },
+      "title":{
+        "type":"text",
+        "analyzer":"ik_smart"
+      },
+      "content":{
+        "type":"text",
+        "analyzer":"ik_smart"
+      }
+    }
+  }
+}
+
+###
+GET http://192.168.150.130:9200/app_info_article/_search
+###
+GET http://192.168.150.130:9200/app_info_article
+
+
